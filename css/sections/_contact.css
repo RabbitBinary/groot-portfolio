@@ -1,0 +1,226 @@
+.contact-section {
+  padding: 60px 0 80px 0; /* Vertikálny padding sekcie */
+  background-color: var(
+    --current-section-projects-bg
+  ); /* Používa pozadie sekcie (rovnaké ako projekty) */
+  transition: background-color 0.5s ease;
+  border-top: 1px solid var(--current-border-color);
+}
+
+.contact-section h2 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: var(--font-primary);
+  margin-bottom: 15px;
+  color: var(--current-text-color);
+  transition: color 0.5s ease;
+}
+
+.contact-section .section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  font-family: var(--font-primary);
+  color: var(--current-text-color);
+  opacity: 0.8;
+  margin-bottom: 50px; /* Väčšia medzera pred formulárom */
+  max-width: 600px; /* Obmedzenie šírky podnadpisu */
+  margin-left: auto;
+  margin-right: auto;
+  transition: color 0.5s ease, opacity 0.5s ease;
+}
+
+/* Formulár - centrovaný v rámci .container, bez vlastného pozadia/tieňa */
+.contact-form.centered-form {
+  /* Používame triedu pridanú v HTML */
+  max-width: 700px; /* Maximálna šírka bloku formulára */
+  margin: 0 auto; /* Centrovanie formulára */
+  padding: 0; /* Formulár samotný nemá padding */
+  /* Odstránené vlastnosti, ktoré vytvárali "kartu": */
+  /* background-color: ...; */
+  /* border-radius: ...; */
+  /* box-shadow: ...; */
+}
+
+/* Riadok s dvoma stĺpcami pre meno a kontakt */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dva rovnaké stĺpce */
+  gap: 25px; /* Medzera medzi stĺpcami */
+  margin-bottom: 25px; /* Medzera pod týmto riadkom */
+}
+
+/* Skupina Label + Input/Textarea */
+.form-group {
+  display: flex;
+  flex-direction: column; /* Label bude nad inputom/textarea */
+  position: relative; /* Potrebné pre absolútne pozicovanie error ikony */
+}
+/* Medzera pod skupinou (napr. pod textarea pred tlačidlom) */
+/* Aplikuje sa, len ak za .form-row nasleduje .form-group (teda pod Meno/Kontakt pred Správou)*/
+.form-row + .form-group {
+  margin-bottom: 25px;
+}
+/* Aplikuje sa aj pod Správou pred tlačidlom */
+.form-group + .form-submit-group {
+  margin-top: 30px; /* Odsadenie tlačidla zhora */
+}
+
+.form-group label {
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--current-text-color);
+  margin-bottom: 8px; /* Medzera pod labelom */
+  opacity: 0.9;
+  transition: color 0.5s ease, opacity 0.5s ease;
+  display: inline-block; /* Pre správny margin */
+}
+
+/* === PÔVODNÝ ŠTÝL INPUTOV A TEXTAREA === */
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px; /* Vnútorný padding */
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  color: var(--current-text-color); /* Farba textu */
+  background-color: rgba(128, 128, 128, 0.1); /* Jemné sivé pozadie */
+  border: 1px solid var(--current-border-color); /* Jemný okraj (farba z premennej) */
+  border-radius: 5px; /* Mierne zaoblené rohy */
+  box-sizing: border-box; /* Padding a border sú zahrnuté v šírke/výške */
+  transition: border-color 0.3s ease, background-color 0.3s ease,
+    color 0.5s ease;
+  appearance: none; /* Odstránenie default štýlov OS */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.form-group input[type="text"]::placeholder,
+.form-group textarea::placeholder {
+  color: var(--current-text-color);
+  opacity: 0.5; /* Mierne priesvitný placeholder */
+  transition: opacity 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  outline: none; /* Bez modrého focus rámčeka */
+  border-color: var(
+    --current-underline-color
+  ); /* Zvýraznenie okraja farbou podčiarknutia */
+  background-color: rgba(
+    128,
+    128,
+    128,
+    0.15
+  ); /* Mierne tmavšie pozadie pri focuse */
+  /* box-shadow: 0 0 0 2px rgba(var(--rgb-underline-color), 0.3); */ /* Voliteľný focus shadow - vyžaduje RGB premennú */
+}
+/* ======================================= */
+
+.form-group textarea {
+  resize: vertical; /* Umožní len vertikálnu zmenu veľkosti */
+  min-height: 120px; /* Minimálna výška */
+  line-height: 1.6; /* Lepšie čítanie dlhšieho textu */
+}
+
+/* --- Štýly pre validáciu (HTML5) --- */
+.form-group input:required:invalid:not(:placeholder-shown):not(:focus),
+.form-group textarea:required:invalid:not(:placeholder-shown):not(:focus) {
+  /* Červený okraj, ak je pole povinné, neplatné a nemá focus */
+  border-color: #e74c3c;
+}
+/* Ikona chyby */
+.form-error-icon {
+  position: absolute;
+  /* Upravená pozícia pre tento štýl inputu */
+  top: calc(50% + 12px); /* Posun od vrchu labelu + cca polovica výšky inputu */
+  right: 12px; /* Odsadenie od pravého okraja */
+  transform: translateY(-50%);
+  color: #e74c3c;
+  font-weight: bold;
+  display: none; /* Štandardne skrytá */
+  pointer-events: none;
+  font-size: 1.2rem; /* Veľkosť ikony */
+  line-height: 1; /* Pre presnejšie centrovanie */
+}
+/* Zobrazenie ikony pri chybe (keď pole stratí focus a je neplatné) */
+.form-group
+  input:required:invalid:not(:placeholder-shown):not(:focus)
+  + .form-error-icon,
+.form-group
+  textarea:required:invalid:not(:placeholder-shown):not(:focus)
+  + .form-error-icon {
+  display: block;
+}
+/* -------------------------------------- */
+
+/* Centrovanie tlačidla */
+.form-submit-group {
+  text-align: center;
+  /* margin-top už rieši .form-group + .form-submit-group */
+}
+
+/* Tlačidlo preberá štýly z .cta-button (definované inde) */
+.form-submit-group .cta-button {
+  /* Tu môžeme pridať špecifické úpravy, ak treba */
+  min-width: 180px; /* Minimálna šírka */
+  padding: 12px 30px; /* Vnútorný padding */
+}
+
+/* Stavové správy */
+.form-status {
+  margin-top: 25px; /* Odsadenie správy od tlačidla/formulára */
+  padding: 12px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+  display: none; /* Štandardne skryté */
+  font-size: 0.95rem;
+  transition: background-color 0.5s ease, color 0.5s ease,
+    border-color 0.5s ease;
+}
+.form-status.success {
+  background-color: rgba(46, 204, 113, 0.15);
+  color: #2ecc71;
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+.form-status.error {
+  background-color: rgba(231, 76, 60, 0.15);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+.form-status.sending {
+  background-color: rgba(52, 152, 219, 0.15);
+  color: #3498db;
+  border: 1px solid rgba(52, 152, 219, 0.3);
+}
+
+/* --- Responzivita Formulára --- */
+@media (max-width: 768px) {
+  .contact-section h2 {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .contact-section .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+  /* .contact-form.centered-form { padding: 0; } */ /* Už má padding 0 */
+  .form-row {
+    grid-template-columns: 1fr; /* Stĺpce pod sebou */
+    gap: 20px; /* Menšia medzera */
+    margin-bottom: 20px; /* Menšia medzera */
+  }
+  .form-group + .form-group,
+  .form-row + .form-group {
+    margin-bottom: 20px; /* Menšia medzera */
+  }
+  .form-group + .form-submit-group {
+    margin-top: 25px; /* Menšie odsadenie tlačidla */
+  }
+}
+
+/* =============================================================== */
+/* KONIEC OBSAHU PRE: css/sections/_contact.css                  */
+/* =============================================================== */

@@ -1,0 +1,24 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--current-bg-color);
+  background-attachment: fixed;
+  color: var(--current-text-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Wrapper pre obsah s pevnou šírkou - NEBUDE MAŤ POZADIE */
+.page-wrapper {
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 20px; /* Bočný padding */
+  width: 100%;
+}

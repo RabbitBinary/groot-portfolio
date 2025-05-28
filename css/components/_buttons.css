@@ -1,0 +1,122 @@
+/* Hamburger tlačidlo */
+.hamburger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--current-text-color);
+    padding: 8px;
+    line-height: 1;
+    position: relative; /* Potrebné pre absolútne pozíciovanie ikon vnútri */
+    width: 36px; /* Približná šírka/výška pre ikony */
+    height: 36px;
+    overflow: hidden; /* Skryje časti ikon, ktoré by mohli presahovať počas animácie */
+}
+
+/* Spoločné štýly pre obe ikony */
+.hamburger-btn i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Východiskový stav pre GSAP animáciu */
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    transform-origin: center center; /* Bod otáčania/škálovania */
+    opacity: 1; /* Hamburger je viditeľný */
+    font-size: 1.5em; /* Nastavíme veľkosť */
+    color: inherit; /* Zdedí farbu z tlačidla */
+    transition: none; /* Vypneme CSS prechody, bude riadiť GSAP */
+}
+
+/* Špecifický počiatočný stav pre ikonu zatvorenia */
+.hamburger-btn .icon-close {
+    opacity: 0; /* Skrytá */
+    /* Štartovací stav pre animáciu - napr. menšia a otočená */
+    transform: translate(-50%, -50%) scale(0.5) rotate(-90deg);
+}
+
+
+/* --- Štýly pre Theme Switch (Toggle) --- */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 20px;
+}
+
+/* Skryjeme defaultný HTML checkbox */
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Vzhľad samotného prepínača (pozadie) */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--current-switch-bg);
+    transition: .4s;
+    display: flex; /* Pre umiestnenie ikon */
+    align-items: center; /* Vertikálne centrovanie ikon */
+    justify-content: space-between; /* Ikony na kraje */
+    padding-top: 2px; /* Odsadenie ikon od krajov */
+
+}
+
+/* Vzhľad posuvníka (krúžok) */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px; /* Veľkosť krúžku */
+    width: 14px;
+    left: 3px; /* Počiatočná pozícia */
+    bottom: 3px;
+    background-color: var(--current-switch-slider);
+    transition: .4s;
+}
+
+/* Ikony v prepínači */
+.slider .icon {
+    color: var(--current-switch-icon);
+    font-size: 10px;
+    transition: opacity 0.4s ease;
+}
+
+/* Zmena pozície posuvníka pri zapnutom stave (light mode) */
+input:checked + .slider:before {
+    /* Posun = šírka slidera - šírka štvorčeka - 2x left padding */
+    /* 44px - 14px - (2 * 3px) = 24px */
+    transform: translateX(24px);
+}
+
+/* Zmena farby pozadia prepínača pri zapnutom stave */
+input:checked + .slider {
+   /* Môžeme nechať rovnakú farbu alebo zmeniť */
+   /* background-color: var(--current-primary-color); */
+}
+
+/* Zobrazovanie/skrývanie ikon podľa stavu */
+/* Default (dark mode - checkbox nie je checked) */
+input:not(:checked) + .slider .sun { opacity: 0; }
+input:not(:checked) + .slider .moon { opacity: 1; }
+input:checked + .slider .sun { opacity: 1; }
+input:checked + .slider .moon { opacity: 0; }
+
+
+/* Zaoblenie prepínača */
+.slider.round { border-radius: 3px; }
+.slider.round:before { border-radius: 1%; }
+
+/* Skrytie desktopového prepínača na mobile */
+@media (max-width: 768px) {
+    .theme-switch-desktop { display: none; }
+}
+ /* Skrytie mobilného prepínača na desktope (už je v _header.css) */

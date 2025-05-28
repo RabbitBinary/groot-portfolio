@@ -1,0 +1,101 @@
+.main-header {
+    position: sticky; /* Alebo fixed, ak má byť vždy hore */
+    /* === ZMENA: Musí byť explicitne nastavené top: 0 === */
+    top: 0;
+    /* ================================================= */
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--current-header-bg);
+    z-index: 1000;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--current-border-color);
+
+    /* === ZMENA/DOPLNENIE: Pridanie 'top' do transition === */
+    transition:
+        top 0.4s ease-in-out, /* <<< PRIDANÉ: Animácia pre posun hore/dole */
+        background-color 0.5s ease,
+        border-color 0.5s ease,
+        box-shadow 0.3s ease;
+    /* =================================================== */
+}
+
+.main-header.hidden {
+    /* Posunie hlavičku hore presne o jej výšku */
+    top: calc(-1 * var(--header-height));
+    /* Môžeme pridať jemné zníženie tieňa, keď je schované (voliteľné) */
+    /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Logo vľavo, zvyšok vpravo */
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    font-family: var(--font-logo);
+    font-size: 30px; /* Trochu menšie pre decentnosť */
+    font-weight: 500;
+    color: var(--current-primary-color);
+    flex-shrink: 0; /* Aby sa nezmenšovalo */
+}
+
+/* Wrapper pre Desktop menu a prepínač */
+.nav-controls-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* Prepínač témy */
+.theme-switch-wrapper {
+    margin-left: 20px; /* Odsadenie od menu */
+    display: flex;
+    align-items: center;
+}
+
+/* Skrytie/zobrazenie prvkov */
+.theme-switcher-mobile-container { display: none; } /* Skryté na desktope */
+.hamburger-btn { display: none; } /* Skryté na desktope */
+.mobile-nav-panel { display: none; } /* Mobilný panel skrytý */
+
+/* --- Responzivita pre Hlavičku --- */
+@media (max-width: 768px) {
+    /* === Nové rozloženie pomocou Grid === */
+    .header-container {
+        display: grid;
+        grid-template-columns: auto 1fr auto; /* Logo | Stred (zaberie zvyšok) | Hamburger */
+        align-items: center; /* Vertikálne centrovanie */
+        padding: 0 15px; /* Menší padding na mobile */
+    }
+
+    .logo {
+        grid-column: 1 / 2; /* Logo v prvom stĺpci */
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+    .theme-switcher-mobile-container {
+        grid-column: 2 / 3; /* Kontajner prepínača v strednom stĺpci */
+        display: flex; /* Zobraziť kontajner */
+        justify-content: center; /* Vycentrovať prepínač vnútri */
+        padding: 0 10px; /* Malé odsadenie od loga/hamburgeru */
+    }
+     /* Samotný prepínač - odstrániť margin, ktorý bol pre desktop */
+    .theme-switcher-mobile-container .theme-switch-wrapper {
+        margin-left: 0;
+    }
+
+    .hamburger-btn {
+        grid-column: 3 / 4; /* Hamburger v treťom stĺpci */
+        display: block; /* Zobraziť hamburger */
+        justify-self: end; /* Zarovnať hamburger doprava v jeho stĺpci */
+    }
+
+    /* Skryjeme desktopové menu a jeho prepínač */
+    .nav-controls-wrapper { display: none; }
+
+    /* Zobrazíme panel pre mobilné menu (ale stále bude skrytý pomocou transform) */
+    .mobile-nav-panel { display: block; }
+}

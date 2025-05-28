@@ -1,0 +1,48 @@
+/* css/components/_footer.css */
+
+.main-footer {
+    padding: 30px 0; /* Horný/dolný padding */
+    background-color: var(--current-footer-bg, var(--current-header-bg)); /* Použije špecifickú farbu footera, ak je definovaná, inak farbu headeru */
+    color: var(--current-text-color);
+    border-top: 1px solid var(--current-border-color); /* Horný okraj */
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-direction: column; /* Predvolene pod sebou na mobile */
+    align-items: center; /* Centrovanie obsahu */
+    justify-content: center;
+    gap: 15px; /* Medzera medzi textom a ikonami */
+    text-align: center;
+}
+
+.main-footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.footer-social-links a {
+    color: var(--current-text-color);
+    font-size: 1.3rem; /* Veľkosť ikon */
+    margin: 0 10px; /* Odsadenie medzi ikonami */
+    opacity: 0.7;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.footer-social-links a:hover {
+    opacity: 1;
+    color: var(--current-underline-color); /* Farba pri hover */
+}
+
+/* Rozloženie na väčších obrazovkách */
+@media (min-width: 768px) {
+    .main-footer .container {
+        flex-direction: row; /* Vedľa seba */
+        justify-content: space-between; /* Text vľavo, ikony vpravo */
+    }
+     .main-footer p {
+         text-align: left;
+     }
+}

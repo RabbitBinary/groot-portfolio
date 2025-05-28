@@ -1,0 +1,100 @@
+/* css/base/_variables.css */
+
+:root {
+    /* === Základné Konštanty === */
+    --font-primary: 'Poppins', sans-serif;
+    --font-logo: 'Titillium Web', sans-serif;
+    --header-height: 70px;
+    --container-max-width: 1140px;
+
+    /* === Farebná Paleta (Čierna/Biela/Sivá) === */
+    /* Tmavé odtiene */
+    --color-black-primary: #121212;
+    --color-black-secondary: #1e1e1e;
+    --color-gray-dark-1: #2c2c2c;
+    --color-gray-dark-2: #3a3a3a;
+    --color-gray-medium: #555555;
+    --section-projects-bg-dark: var(--header-bg-dark);
+    --card-bg-dark: var(--color-gray-dark-1);
+
+    /* Svetlé odtiene */
+    --color-white-primary: #ffffff;
+    --color-white-secondary: #f8f9fa;
+    --color-gray-light-1: #f1f1f1;
+    --color-gray-light-2: #e0e0e0; /* Svetlá sivá pre text v tm. režime */
+    --color-gray-light-3: #cccccc;
+    --section-projects-bg-light: var(--color-white-secondary);
+    --card-bg-light: var(--color-white-primary);
+
+    /* Priesvitné varianty pre okraje */
+    --color-border-dark-rgba: rgba(255, 255, 255, 0.08);
+    --color-border-light-rgba: rgba(0, 0, 0, 0.06);
+
+    /* === Sémantické Premenné: Tmavý Režim === */
+    --bg-dark: var(--color-black-primary);
+    --text-dark: var(--color-gray-light-2);         /* Farba pre bežný text a aj pre LOGO */
+    --header-bg-dark: var(--color-black-secondary);
+    --panel-bg-dark: var(--color-gray-dark-1);
+    --border-dark: var(--color-border-dark-rgba);
+    --switch-bg-dark: var(--color-gray-medium);
+    --switch-slider-dark: var(--color-gray-light-2);
+    --switch-icon-dark: var(--color-black-primary);
+    /* --primary-color-dark: #4dabf7; */ /* <<< ODSTRÁNENÉ */
+    --underline-color-dark: var(--color-gray-light-2);
+
+    /* === Sémantické Premenné: Svetlý Režim === */
+    --bg-light: var(--color-white-secondary);
+    --text-light: var(--color-black-primary);       /* Farba pre bežný text a aj pre LOGO */
+    --header-bg-light: var(--color-white-primary);
+    --panel-bg-light: var(--color-gray-light-1);
+    --border-light: var(--color-border-light-rgba);
+    --switch-bg-light: var(--color-gray-light-3);
+    --switch-slider-light: var(--color-white-primary);
+    --switch-icon-light: var(--color-black-primary);
+    /* --primary-color-light: #0056b3; */ /* <<< ODSTRÁNENÉ */
+    --underline-color-light: var(--color-black-primary);
+
+
+    /* === Dynamické Premenné (Aplikované na elementy) === */
+    --current-bg-color: var(--bg-dark);
+    --current-text-color: var(--text-dark);         /* <<< Táto premenná bude použitá aj pre logo */
+    --current-header-bg: var(--header-bg-dark);
+    --current-mobile-nav-bg: var(--panel-bg-dark);
+    --current-border-color: var(--border-dark);
+    --current-switch-bg: var(--switch-bg-dark);
+    --current-switch-slider: var(--switch-slider-dark);
+    --current-switch-icon: var(--switch-icon-dark);
+    /* --current-primary-color: var(--primary-color-dark); */ /* <<< ODSTRÁNENÉ */
+    --current-underline-color: var(--underline-color-dark);
+    --current-card-bg: var(--card-bg-dark); 
+}
+
+/* === Aplikácia Tmavého Režimu === */
+[data-theme="dark"] {
+    --current-bg-color: var(--bg-dark);
+    --current-text-color: var(--text-dark);
+    --current-header-bg: var(--header-bg-dark);
+    --current-mobile-nav-bg: var(--panel-bg-dark);
+    --current-border-color: var(--border-dark);
+    --current-switch-bg: var(--switch-bg-dark);
+    --current-switch-slider: var(--switch-slider-dark);
+    --current-switch-icon: var(--switch-icon-dark);
+    --current-underline-color: var(--underline-color-dark);
+    --current-section-projects-bg: var(--section-projects-bg-dark);
+    --current-card-bg: var(--card-bg-dark);
+}
+
+/* === Aplikácia Svetlého Režimu === */
+[data-theme="light"] {
+    --current-bg-color: var(--bg-light);
+    --current-text-color: var(--text-light);
+    --current-header-bg: var(--header-bg-light);
+    --current-mobile-nav-bg: var(--panel-bg-light);
+    --current-border-color: var(--border-light);
+    --current-switch-bg: var(--switch-bg-light);
+    --current-switch-slider: var(--switch-slider-light);
+    --current-switch-icon: var(--switch-icon-light);
+    --current-underline-color: var(--underline-color-light);
+    --current-section-projects-bg: var(--section-projects-bg-light);
+    --current-card-bg: var(--card-bg-light);
+}

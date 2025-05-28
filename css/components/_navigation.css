@@ -1,0 +1,110 @@
+/* --- Desktop Nav --- */
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.main-nav ul li {
+  margin-left: 25px;
+}
+.main-nav ul li a {
+  text-decoration: none; /* Len raz */
+  position: relative;
+  padding-bottom: 2px; /* Len spodný padding pre podčiarknutie */
+  color: var(--current-text-color);
+  font-weight: 500; /* Zjednotil som s mobilným, použite 400 ak chcete tenšie */
+  font-size: 0.95em;
+  transition: color 0.5s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* --- Mobilný Navigačný Panel --- */
+.mobile-nav-panel {
+  position: fixed;
+  top: var(--header-height);
+  /* right: 0; Chýbalo? Doplnené */
+  right: 0;
+  width: 250px;
+  height: calc(100vh - var(--header-height));
+  background-color: var(--current-mobile-nav-bg);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); /* Pridaný tieň */
+  transform: translateX(100%);
+  z-index: 999;
+  padding-top: 30px;
+  box-sizing: border-box; /* Pridané pre istotu kvôli border */
+  border-left: 1px solid var(--current-border-color);
+  /* Zjednotená transition */
+  transition: transform 0.3s ease-in-out, background-color 0.5s ease,
+    border-color 0.5s ease, box-shadow 0.3s ease;
+}
+.mobile-nav-panel.active {
+  transform: translateX(0);
+}
+
+.mobile-nav-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobile-nav-panel ul li {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.mobile-nav-panel ul li a {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+  color: var(--current-text-color);
+  font-weight: 500;
+  font-size: 1.1em;
+  transition: color 0.5s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* Na desktope skryjeme mobilný panel */
+@media (min-width: 769px) {
+  .mobile-nav-panel {
+    display: none;
+  }
+}
+
+/* --- Spoločné štýly pre podčiarknutie --- */
+.main-nav ul li a::after,
+.mobile-nav-panel ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--current-underline-color);
+  transition: width 0.3s ease-out, background-color 0.5s ease;
+}
+
+/* --- Animácia podčiarknutia pri Hover --- */
+.main-nav ul li a:hover::after,
+.mobile-nav-panel ul li a:hover::after {
+  width: 100%;
+}
+
+/* --- Štýl pre Aktívny Link --- */
+.main-nav ul li a.active::after,
+.mobile-nav-panel ul li a.active::after {
+  width: 100%;
+}
+
+.main-nav ul li a,
+.mobile-nav-panel ul li a {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}

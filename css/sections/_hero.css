@@ -1,0 +1,101 @@
+.hero-section {
+  position: relative;
+  height: calc(100dvh - var(--header-height));
+  height: calc(100vh - var(--header-height)); /* Fallback */
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--current-bg-color);
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--current-border-color);
+  /* Flex centrovanie pre .hero-content */
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */ /* Stále necentrujeme horizontálne */
+  /* Padding dáme preč, rieši to .container */
+  padding: 0;
+}
+
+#hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: block;
+}
+
+/* Vonkajší .hero-content - len pre vertikálne centrovanie a z-index */
+.hero-content {
+  position: relative; /* Môže byť aj static, flex rodič centruje */
+  z-index: 2; /* Nad canvasom */
+  width: 100%; /* Roztiahne sa na celú šírku flex kontajnera (.hero-section) */
+  color: var(--current-text-color);
+  transition: color 0.5s ease;
+  box-sizing: border-box;
+  /* Odstránime text-align, padding, max-width - rieši vnútorný .container */
+  text-align: left; /* Alebo môžeme nechať na .container */
+}
+
+/* === Vnútorný .container (MAL BY MAŤ ROVNAKÉ ŠTÝLY AKO V HLAVIČKE) === */
+.hero-content .container {
+  max-width: var(--container-max-width); /* Globálna max šírka */
+  margin-left: auto; /* <<< Kľúčové pre centrovanie bloku */
+  margin-right: auto; /* <<< Kľúčové pre centrovanie bloku */
+  padding-left: var(
+    --container-padding,
+    20px
+  ); /* <<< Použijeme premennú alebo fixnú hodnotu */
+  padding-right: var(
+    --container-padding,
+    20px
+  ); /* <<< Rovnaký padding ako inde */
+  box-sizing: border-box;
+  width: 100%; /* Aby rešpektoval padding */
+  text-align: left; /* Istota zarovnania textu */
+}
+
+/* Štýly pre textové prvky (môžu zostať rovnaké) */
+.hero-content h1 {
+  font-family: var(--font-logo);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--current-text-color);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-content p {
+  font-family: var(--font-primary);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 550px; /* Obmedzenie šírky odstavca zostáva */
+  margin-top: 0;
+  margin-bottom: 2rem;
+  color: var(--current-text-color);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Štýly pre tlačidlo (môžu zostať rovnaké) */
+.cta-button {
+  /* ... */
+  opacity: 0;
+  transform: translateY(30px);
+}
+/* .cta-button:hover { ... } */
+
+/* Responzivita už nie je nutná pre padding, ak ho má .hero-section */
+@media (max-width: 768px) {
+  .hero-content p {
+  max-width: 300px;
+  }
+ }
+
+/* =============================================================== */
+/* KONIEC OBSAHU PRE: css/sections/_hero.css                     */
+/* =============================================================== */

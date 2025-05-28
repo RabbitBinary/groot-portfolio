@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>g.root</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body data-theme="dark" style="min-height: 100vh">
+    <!-- Tmavá téma ako default, výška pre testovanie -->
+
+    <header id="main-header" class="main-header">
+      <div class="container header-container">
+        <!-- Logo - vždy vľavo -->
+        <div class="logo">g.root</div>
+
+        <!-- Kontajner pre mobilný prepínač (bude v strede na mobile) -->
+        <div class="theme-switcher-mobile-container">
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="theme-checkbox">
+              <input
+                type="checkbox"
+                id="theme-checkbox"
+                aria-label="Prepnúť svetlý/tmavý režim"
+              />
+              <div class="slider round">
+                <span class="icon sun" style="margin-left: 4px"
+                  ><i class="fas fa-sun"></i
+                ></span>
+                <span class="icon moon" style="margin-right: 4px"
+                  ><i class="fas fa-moon"></i
+                ></span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <!-- Kontajner pre Desktop menu a prepínač (vpravo na desktope) -->
+        <div class="nav-controls-wrapper">
+          <nav id="main-nav" class="main-nav">
+            <ul>
+              <li><a href="#domov">Domov</a></li>
+              <li><a href="#projekty">Projekty</a></li>
+              <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+          </nav>
+          <!-- Prepínač pre desktop -->
+          <div class="theme-switch-wrapper theme-switch-desktop">
+            <label class="theme-switch" for="theme-checkbox-desktop">
+              <input
+                type="checkbox"
+                id="theme-checkbox-desktop"
+                aria-label="Prepnúť svetlý/tmavý režim"
+              />
+              <div class="slider round">
+                <span class="icon sun" style="padding-left: 4px"
+                  ><i class="fas fa-sun"></i
+                ></span>
+                <span class="icon moon" style="padding-right: 4px"
+                  ><i class="fas fa-moon"></i
+                ></span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <!-- Hamburger tlačidlo (vždy vpravo na mobile) -->
+        <button
+          id="hamburger-btn"
+          class="hamburger-btn"
+          aria-label="Otvoriť/Zatvoriť menu"
+        >
+          <!-- Upravený aria-label -->
+          <i class="fas fa-bars icon-hamburger"></i>
+          <!-- Ikona hamburgeru -->
+          <i class="fas fa-times icon-close"></i>
+          <!-- Ikona zatvorenia -->
+        </button>
+      </div>
+    </header>
+    <!-- Vysúvacie menu pre mobil (mimo hlavného toku header-container) -->
+    <nav id="mobile-nav-panel" class="mobile-nav-panel">
+      <ul>
+        <li><a href="#domov">Domov</a></li>
+        <li><a href="#projekty">Projekty</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section id="domov" class="hero-section">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content">
+          <div class="container">
+            <h1 id="hero-title">Vesmír</h1>
+            <p id="hero-subtitle">
+              Ticho, v ktorom sa ukrýva celý príbeh existencie, a predsa je iba
+              prázdnym rámcom pre všetko, čo v ňom existuje.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- === Sekcia Projekty === -->
+      <section id="projekty" class="projects-section">
+        <div class="container">
+          <h2>Projekty</h2>
+          <div class="tabs-nav">
+            <button
+              class="tab-link active"
+              data-tab="tab-webapps"
+              role="tab"
+              aria-selected="true"
+              aria-controls="tab-webapps"
+            >
+              Webové Aplikácie
+            </button>
+            <button
+              class="tab-link"
+              data-tab="tab-mobileapps"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tab-mobileapps"
+            >
+              Mobilné Aplikácie
+            </button>
+            <button
+              class="tab-link"
+              data-tab="tab-websites"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tab-websites"
+            >
+              Webstránky
+            </button>
+          </div>
+          <!-- === Kontajner pre Obsah Záložiek === -->
+          <div class="tabs-content">
+            <!-- Obsah Záložky 1: Webové Aplikácie (viditeľný na začiatku) -->
+            <div
+              id="tab-webapps"
+              class="tab-pane active"
+              role="tabpanel"
+              aria-labelledby="tab-webapps"
+            >
+              <div class="project-grid">
+                <!-- Karta Projektu 1 (Web App) -->
+                <div
+                  class="project-card"
+                  data-project-id="projekt1"
+                  data-title="CUBE"
+                  data-image-detail="assets/images/projekt1-detail.png"
+                  data-tech="three.js, vite, gemini ai"
+                  data-live-url="https://cube.groot.sk"
+                  data-code-url=""
+                >
+                  <div class="project-image-container">
+                    <img
+                      src="assets/images/projekt1-detail.png"
+                      alt="cube image"
+                      class="project-image"
+                    />
+                  </div>
+                  <div class="project-info">
+                    <h3 class="project-title">CUBE</h3>
+                    <p class="project-description">3D interaktívny model s hlasovým ovládaním..</p>
+                  </div>
+                  <div class="project-full-description" style="display: none">
+                    <p>Tento projekt ukazuje spojenie moderných webových technológií na vytvorenie pútavého 3D zážitku priamo vo vašom prehliadači.</p></br>
+										<h4>Použité Technológie a Knižnice:</h4></br>
+										<p>Jadrom aplikácie je knižnica Three.js využívajúca silu WebGL na vykreslenie detailného 3D modelu kocky. 
+											Realistický vzhľad skleneného materiálu je dosiahnutý pomocou fyzikálne založených princípov (PBR) a dynamického osvetlenia scény, 
+											ktoré zabezpečujú HDRI mapy. Moderný nástroj Vite.js zabezpečuje rýchly vývoj a optimalizovaný výkon. Logika je napísaná v 
+											JavaScripte (ES Modules) a používateľské rozhranie v HTML & CSS. Plynulé animácie, ako pulzovanie kocky, zabezpečuje knižnica Tween.js.
+										</p></br>
+										<h4>Hlavné Funkcie:</h4></br>
+										<p>Ovládací panel umožňuje detailnú kontrolu vybraných častí modelu, ktoré možno zvoliť kliknutím alebo cez menu. Môžete meniť farbu, 
+										rotáciu (X/Y) a mierku (Z). Dostupné sú rôzne prostredia (HDRI) a pohľad kamery je plne responzívny.</p></br>
+										<h4>Experimentálne Hlasové Ovládanie</h4></br>
+										<p>Kľúčovou funkciou je hlasové ovládanie využívajúce Web Speech API prehliadača (Chrome/Edge) na rozpoznanie reči (SK/EN). 
+										Rozpoznaný text následne analyzuje umelá inteligencia Google Gemini AI (cez bezpečné backendové API), ktorá pochopí zámer príkazu 
+										(akcia, cieľ, parametre) aj pri rôznych formuláciách. Frontend potom vykoná príslušnú akciu.</p>
+                  </div>
+                </div>
+            <!-- Obsah Záložky 2: Mobilné Aplikácie (skrytý na začiatku) -->
+            <div
+              id="tab-mobileapps"
+              class="tab-pane"
+              role="tabpanel"
+              aria-labelledby="tab-mobileapps"
+            >
+              <div class="project-grid">
+                <!-- Vložte sem karty pre mobilné aplikácie -->
+                <p style="grid-column: 1 / -1; text-align: center">
+                  (Zatiaľ žiadne mobilné aplikácie)
+                </p>
+              </div>
+            </div>
+            <!-- Obsah Záložky 3: Webstránky (skrytý na začiatku) -->
+            <div
+              id="tab-websites"
+              class="tab-pane"
+              role="tabpanel"
+              aria-labelledby="tab-websites"
+            >
+              <div class="project-grid">
+                <!-- Vložte sem karty pre webstránky -->
+          <!-- Koniec .tabs-content -->
+        </div>
+        <!-- Koniec .container -->
+      </section>
+      <section id="kontakt" class="contact-section">
+        <div class="container">
+          <h2>Kontakt</h2>
+          <p class="section-subtitle">...</p>
+          <form
+            id="contact-form"
+            class="contact-form centered-form"
+            action="..."
+            method="POST"
+          >
+            <!-- Pridáme triedu centered-form -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Meno</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Vaše meno"
+                  required
+                />
+                <span class="form-error-icon" aria-hidden="true">!</span>
+              </div>
+              <div class="form-group">
+                <label for="contact-info">Email alebo Telefón</label>
+                <input
+                  type="text"
+                  id="contact-info"
+                  name="kontakt"
+                  placeholder="Váš email alebo tel. číslo"
+                  required
+                />
+                <span class="form-error-icon" aria-hidden="true">!</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Správa</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                placeholder="Sem napíšte vašu správu..."
+                required
+              ></textarea>
+              <span class="form-error-icon" aria-hidden="true">!</span>
+            </div>
+            <input
+              type="text"
+              name="_gotcha"
+              style="display: none !important"
+            />
+            <div
+              id="form-status"
+              class="form-status"
+              role="status"
+              aria-live="polite"
+            ></div>
+            <div class="form-submit-group">
+              <button type="submit" class="cta-button">Odoslať Správu</button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <div
+        id="project-popup"
+        class="popup-overlay"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="popup-title"
+      >
+        <div class="popup-container">
+          <!-- Vonkajší kontajner pre centrovanie -->
+          <div class="popup-content">
+            <!-- Hlavný viditeľný obsah popupu -->
+            <button
+              id="popup-close-btn"
+              class="popup-close-btn"
+              aria-label="Zatvoriť detail projektu"
+            >
+              ×
+            </button>
+            <!-- Mriežka pre dva stĺpce -->
+            <div class="popup-grid">
+              <!-- Ľavý Stĺpec (Statický) -->
+              <div class="popup-left">
+                <img
+                  id="popup-image"
+                  src=""
+                  alt="Detail projektu"
+                  class="popup-image"
+                />
+                <hr class="popup-divider" />
+                <div class="popup-tech-stack">
+                  <!-- Obsah generovaný z data-tech -->
+                </div>
+              </div>
+              <!-- Pravý Stĺpec (Obsahuje skrolovateľnú časť a fixné linky) -->
+              <div class="popup-right">
+                <!-- Wrapper pre obsah, ktorý sa bude skrolovať -->
+                <div class="popup-scrollable-content">
+                  <h3 id="popup-title" class="popup-title"></h3>
+                  <div id="popup-description-container"></div>
+                </div>
+                <!-- Koniec .popup-scrollable-content -->
+                <!-- Odkazy - fixné pod skrolovateľnou časťou -->
+                <div class="popup-links">
+                  <a
+                    href="#popup-live-link"
+                    id="popup-live-link"
+                    class="popup-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Demo
+                  </a>
+                  <a
+                    href="https://cube.groot.sk"
+                    id="popup-code-link"
+                    class="popup-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-github"></i> Kód Projektu
+                  </a>
+                </div>
+                <!-- Koniec .popup-links -->
+              </div>
+              <!-- Koniec .popup-right -->
+            </div>
+            <!-- Koniec .popup-grid -->
+          </div>
+          <!-- Koniec .popup-content -->
+        </div>
+        <!-- Koniec .popup-container -->
+      </div>
+      <!-- === Koniec Popup === -->
+      <!-- Tu budú neskôr ďalšie sekcie -->
+    </main>
+    <footer class="main-footer">
+      <div class="container">
+        <!-- Použijeme rovnaký kontajner pre zarovnanie -->
+        <p><span id="current-year"></span> g.root © 2025</p>
+        <!-- Prípadne odkazy na sociálne siete -->
+        <div class="footer-social-links">
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <!-- Pridaj ďalšie -->
+        </div>
+      </div>
+    </footer>
+    <script src="libs/gsap.js"></script>
+    <script src="libs/ScrollTrigger.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./libs/three/build/three.module.js",
+          "three/addons/": "./libs/three/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

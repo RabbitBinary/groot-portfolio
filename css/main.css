@@ -1,0 +1,14 @@
+@import url('base/_reset.css');
+@import url('base/_variables.css');
+@import url('base/_global.css');
+
+@import url('utils/_theme.css');
+/* @import url('utils/_responsive.css'); */ /* Ak použijete samostatný súbor */
+
+@import url('components/_header.css');
+@import url('components/_navigation.css');
+@import url('components/_buttons.css');
+@import url('components/_footer.css');
+@import url('sections/_hero.css');
+@import url('sections/_projects.css');
+@import url('sections/_contact.css');
